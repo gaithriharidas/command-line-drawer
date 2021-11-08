@@ -1,6 +1,7 @@
 package com.commandlinedrawer.draw;
 
 import com.commandlinedrawer.exception.CommandLineDrawerException;
+import com.commandlinedrawer.model.CommandType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +12,9 @@ public class Canvas extends Command {
 
     @Override
     public void execute(List<String> params) throws CommandLineDrawerException {
-        if (params.size() < 2) {
+        if (params.size() < CommandType.getParamsCount(CommandType.CANVAS)
+            || params.size() > CommandType.getParamsCount(CommandType.CANVAS)
+        ) {
             throw new CommandLineDrawerException("Command C requires 2 params.");
         }
 

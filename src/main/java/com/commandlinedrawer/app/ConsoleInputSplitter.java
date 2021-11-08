@@ -14,7 +14,7 @@ public class ConsoleInputSplitter {
         *    -> commandType: L
         *    -> params: x1 y1 x2 y2 */
         String[] inputs = consoleInput.split(" ");
-        commandType = CommandType.get(inputs[0]);
+        commandType = CommandType.getCommandType(inputs[0]);
         params = new ArrayList<>();
         for (int i=1; i<inputs.length; i++) {
             params.add(inputs[i]);

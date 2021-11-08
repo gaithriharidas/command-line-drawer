@@ -1,6 +1,7 @@
 package com.commandlinedrawer.draw;
 
 import com.commandlinedrawer.exception.CommandLineDrawerException;
+import com.commandlinedrawer.model.CommandType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,9 @@ public class Line extends Command {
 
     @Override
     public void execute(List<String> params) throws CommandLineDrawerException {
-        if (params.size() < 4) {
+        if (params.size() < CommandType.getParamsCount(CommandType.LINE)
+            || params.size() > CommandType.getParamsCount(CommandType.LINE)
+        ) {
             throw new CommandLineDrawerException("Command L requires 4 params.");
         }
 

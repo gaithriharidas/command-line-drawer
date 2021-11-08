@@ -1,6 +1,7 @@
 package com.commandlinedrawer.draw;
 
 import com.commandlinedrawer.exception.CommandLineDrawerException;
+import com.commandlinedrawer.model.CommandType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,9 @@ public class Rectangle extends Command {
 
     @Override
     public void execute(List<String> params) throws CommandLineDrawerException {
-        if (params.size() < 4) {
+        if (params.size() < CommandType.getParamsCount(CommandType.RECTANGLE)
+            || params.size() > CommandType.getParamsCount(CommandType.RECTANGLE)
+        ) {
             throw new CommandLineDrawerException("Command R requires 4 params.");
         }
 

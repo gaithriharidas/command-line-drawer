@@ -60,9 +60,9 @@ public class CommandLineDrawerApplication {
         if (!matcher.matches()) {
             throw new CommandLineDrawerException("Command string is invalid.");
         }
-        String command = consoleInput.substring(0, 1);
-        if (CommandType.get(command) == null) {
-            throw new CommandLineDrawerException("Command " + command + " is not a valid command.");
+        String commandCh = consoleInput.substring(0, 1);
+        if (CommandType.getCommandType(commandCh) == null) {
+            throw new CommandLineDrawerException("Command " + commandCh + " is not a valid command.");
         }
     }
 }

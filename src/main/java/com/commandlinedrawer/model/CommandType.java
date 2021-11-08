@@ -21,20 +21,14 @@ public enum CommandType {
     private final String commandCh;
     private final int paramsCount;
 
-    private CommandType(String commandCh, int paramsCount) {
+    CommandType(String commandCh, int paramsCount) {
         this.commandCh = commandCh;
         this.paramsCount = paramsCount;
     }
 
-    public boolean equalsCommandChar(String other) {
-        return commandCh.equals(other);
-    }
-
-    public String toString() {
-        return this.commandCh;
-    }
-
-    public static CommandType get(String commandChar) {
+    public static CommandType getCommandType(String commandChar) {
         return lookup.get(commandChar);
     }
+
+    public static int getParamsCount(CommandType c) { return lookup.get(c.commandCh).paramsCount; }
 }
