@@ -16,10 +16,9 @@ public class Rectangle extends Command {
 
     @Override
     public void execute(List<String> params) throws CommandLineDrawerException {
-        if (params.size() < CommandType.getParamsCount(CommandType.RECTANGLE)
-            || params.size() > CommandType.getParamsCount(CommandType.RECTANGLE)
-        ) {
-            throw new CommandLineDrawerException("Command R requires 4 params.");
+        final int paramsCount = CommandType.getParamsCount(CommandType.RECTANGLE);
+        if (params.size() < paramsCount || params.size() > paramsCount) {
+            throw new CommandLineDrawerException("Command R requires " + paramsCount + " params.");
         }
 
         x1 = Integer.parseInt(params.get(0));

@@ -6,6 +6,7 @@ import com.commandlinedrawer.model.CommandType;
 import java.util.List;
 
 public class Quit extends Command {
+
     @Override
     public void execute(final List<String> params) throws CommandLineDrawerException {
         if (params.size() > CommandType.getParamsCount(CommandType.QUIT)) {

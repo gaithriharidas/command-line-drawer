@@ -15,10 +15,9 @@ public class Line extends Command {
 
     @Override
     public void execute(List<String> params) throws CommandLineDrawerException {
-        if (params.size() < CommandType.getParamsCount(CommandType.LINE)
-            || params.size() > CommandType.getParamsCount(CommandType.LINE)
-        ) {
-            throw new CommandLineDrawerException("Command L requires 4 params.");
+        final int paramsCount = CommandType.getParamsCount(CommandType.LINE);
+        if (params.size() < paramsCount || params.size() > paramsCount) {
+            throw new CommandLineDrawerException("Command L requires " + paramsCount + " params.");
         }
 
         startColumn = Integer.parseInt(params.get(0));  // x1

@@ -62,7 +62,7 @@ public class CommandLineDrawerApplication {
         }
         String commandCh = consoleInput.substring(0, 1);
         if (CommandType.getCommandType(commandCh) == null) {
-            throw new CommandLineDrawerException("Command " + commandCh + " is not a valid command.");
+            throw new CommandLineDrawerException("Command " + commandCh.toUpperCase() + " is not a valid command.");
         }
     }
 }

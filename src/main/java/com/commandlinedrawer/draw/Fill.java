@@ -10,11 +10,9 @@ public class Fill extends Command {
     @Override
     public void execute(List<String> params) throws CommandLineDrawerException {
         final String regex = "-?\\d+?";
-
-        if (params.size() < CommandType.getParamsCount(CommandType.FILL)
-            || params.size() > CommandType.getParamsCount(CommandType.FILL)
-        ) {
-            throw new CommandLineDrawerException("Command R requires 3 params.");
+        final int paramsCount = CommandType.getParamsCount(CommandType.FILL);
+        if (params.size() < paramsCount || params.size() > paramsCount) {
+            throw new CommandLineDrawerException("Command F requires " + paramsCount + " params.");
         } else if (!params.get(0).matches(regex)
             || !params.get(1).matches(regex)
             || params.get(2).length() != 1

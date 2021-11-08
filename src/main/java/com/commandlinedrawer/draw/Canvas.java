@@ -12,10 +12,9 @@ public class Canvas extends Command {
 
     @Override
     public void execute(List<String> params) throws CommandLineDrawerException {
-        if (params.size() < CommandType.getParamsCount(CommandType.CANVAS)
-            || params.size() > CommandType.getParamsCount(CommandType.CANVAS)
-        ) {
-            throw new CommandLineDrawerException("Command C requires 2 params.");
+        final int paramsCount = CommandType.getParamsCount(CommandType.CANVAS);
+        if (params.size() < paramsCount || params.size() > paramsCount) {
+            throw new CommandLineDrawerException("Command C requires " + paramsCount + " params.");
         }
 
         width = Integer.parseInt(params.get(0));
