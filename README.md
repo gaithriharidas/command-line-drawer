@@ -19,10 +19,10 @@ the commands.
 |Q|Quit|
 
 __Assumptions__
-|1. Throw error if user tries to create shape before Canvas is created|
-|2. New lines drawn are from (x1,y1) to (x2,y2)|
-|3. Rectangles are drawn from upper left corner (x1,y1) to lower right corner (x2,y2)|
-|4. Colour filler is built with the colour filler from Paint (Windows OS application) in mind|
+1. Throw error if user tries to create shape before Canvas is created
+2. New lines drawn are from (x1,y1) to (x2,y2)
+3. Rectangles are drawn from upper left corner (x1,y1) to lower right corner (x2,y2)
+4. Colour filler is built with the colour filler from Paint (Windows OS application) in mind
 
 __Other information__
 Points outside to the canvas are transferred to the closest edge points.
