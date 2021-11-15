@@ -37,9 +37,6 @@ public class Line extends Command {
         } else if (startRow == endRow) {
             /* y-coordinates are the same, meaning plotting in the same row */
             drawHorizontal();
-        } else {
-            /* any other combinations will mean that the line is slanted */
-            drawSlanted();
         }
     }
 
@@ -50,13 +47,6 @@ public class Line extends Command {
     private void drawVertical() {
         for (int i = startRow; i <= endRow; i++) {
             shape[i][startColumn] = LINE_FILLER;
-        }
-    }
-
-    private void drawSlanted() {
-        double slope = (double) (endRow - startRow) / (double) (endColumn - startColumn);
-        for (int i = startRow; i <= endRow; i++) {
-            shape[i][(int) Math.ceil(startColumn + (slope * i))] = LINE_FILLER;
         }
     }
 }

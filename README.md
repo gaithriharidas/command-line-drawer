@@ -65,40 +65,31 @@ Enter a command: R 3 2 6 5
 |  ====            |
 |                  |
 --------------------
-Enter a command: L 6 2 10 5
---------------------
-|                  |
-|  ==== +          |
-|  *  *  +         |
-|  *  *  +         |
-|  ====   +        |
-|                  |
---------------------
 Enter a command: L 5 6 9 6
 --------------------
 |                  |
-|  ==== +          |
-|  *  *  +         |
-|  *  *  +         |
-|  ====   +        |
+|  ====            |
+|  *  *            |
+|  *  *            |
+|  ====            |
 |    +++++         |
 --------------------
 Enter a command: F 1 1 b
 --------------------
 |bbbbbbbbbbbbbbbbbb|
-|bb====b+bbbbbbbbbb|
-|bb*  *bb+bbbbbbbbb|
-|bb*  *bb+bbbbbbbbb|
-|bb====bbb+bbbbbbbb|
+|bb====bbbbbbbbbbbb|
+|bb*  *bbbbbbbbbbbb|
+|bb*  *bbbbbbbbbbbb|
+|bb====bbbbbbbbbbbb|
 |bbbb+++++bbbbbbbbb|
 --------------------
 Enter a command: F 4 3 a
 --------------------
 |bbbbbbbbbbbbbbbbbb|
-|bb====b+bbbbbbbbbb|
-|bb*aa*bb+bbbbbbbbb|
-|bb*aa*bb+bbbbbbbbb|
-|bb====bbb+bbbbbbbb|
+|bb====bbbbbbbbbbbb|
+|bb*aa*bbbbbbbbbbbb|
+|bb*aa*bbbbbbbbbbbb|
+|bb====bbbbbbbbbbbb|
 |bbbb+++++bbbbbbbbb|
 --------------------
 Enter a command: Q
