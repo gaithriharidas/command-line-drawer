@@ -2,10 +2,12 @@ package com.commandlinedrawer.draw;
 
 import com.commandlinedrawer.exception.CommandLineDrawerException;
 import com.commandlinedrawer.model.CommandType;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class Line extends Command {
     private final char LINE_FILLER = '+';
     private int startColumn;

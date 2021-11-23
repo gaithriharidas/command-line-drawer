@@ -2,9 +2,11 @@ package com.commandlinedrawer.draw;
 
 import com.commandlinedrawer.exception.CommandLineDrawerException;
 import com.commandlinedrawer.model.CommandType;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class Fill extends Command {
 
     @Override

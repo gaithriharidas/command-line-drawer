@@ -2,10 +2,12 @@ package com.commandlinedrawer.draw;
 
 import com.commandlinedrawer.exception.CommandLineDrawerException;
 import com.commandlinedrawer.model.CommandType;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class Rectangle extends Command {
     private final char HORIZONTAL_LINE_FILLER = '=';
     private final char VERTICAL_LINE_FILLER = '*';
