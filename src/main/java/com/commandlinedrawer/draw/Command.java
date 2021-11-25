@@ -42,7 +42,7 @@ public abstract class Command {
 
         for (int i = 0; i < shape.length; ++i) {
             for (int j = 0; j < shape[i].length; j++) {
-                results.append((shape[i][j]) == 0 ? Chars.SPACE : shape[i][j]);
+                results.append((shape[i][j] == 0) ? Chars.SPACE : shape[i][j]);
             }
             results.append(Strings.LINE_SEPARATOR);
         }
