@@ -78,17 +78,8 @@ Enter a command: F 1 1 b
 --------------------
 |bbbbbbbbbbbbbbbbbb|
 |bb====bbbbbbbbbbbb|
-|bb*  *bbbbbbbbbbbb|
-|bb*  *bbbbbbbbbbbb|
-|bb====bbbbbbbbbbbb|
-|bbbb+++++bbbbbbbbb|
---------------------
-Enter a command: F 4 3 a
---------------------
-|bbbbbbbbbbbbbbbbbb|
-|bb====bbbbbbbbbbbb|
-|bb*aa*bbbbbbbbbbbb|
-|bb*aa*bbbbbbbbbbbb|
+|bb*bb*bbbbbbbbbbbb|
+|bb*bb*bbbbbbbbbbbb|
 |bb====bbbbbbbbbbbb|
 |bbbb+++++bbbbbbbbb|
 --------------------
