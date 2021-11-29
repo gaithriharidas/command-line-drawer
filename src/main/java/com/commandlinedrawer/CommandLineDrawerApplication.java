@@ -13,8 +13,13 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @SpringBootApplication
 public class CommandLineDrawerApplication {
+    private static final Logger logger = LoggerFactory.getLogger(CommandLineDrawerApplication.class);
+
     private CanvasContext canvasContext;
     private ConsoleInputSplitter inputSplitter;
 
@@ -34,11 +39,11 @@ public class CommandLineDrawerApplication {
                     System.out.print("Enter a command: ");
                     executeCommand(scanner.nextLine());
                 } catch (CommandLineDrawerException e) {
-                    System.err.println(e.getMessage());
+                    logger.error(e.getMessage());
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
