@@ -4,29 +4,46 @@ import com.commandlinedrawer.app.CanvasContext;
 import com.commandlinedrawer.app.ConsoleInputSplitter;
 import com.commandlinedrawer.exception.CommandLineDrawerException;
 import com.commandlinedrawer.model.CommandType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @SpringBootApplication
 public class CommandLineDrawerApplication {
-    private CanvasContext canvasContext;
+    private static final Logger logger = LoggerFactory.getLogger(CommandLineDrawerApplication.class);
 
-    public static void main(String[] args) {
-        var app = new CommandLineDrawerApplication();
+    private CanvasContext canvasContext;
+    private ConsoleInputSplitter inputSplitter;
+
+    @Autowired
+    public CommandLineDrawerApplication(CanvasContext canvasContext, ConsoleInputSplitter inputSplitter) {
+        this.canvasContext = canvasContext;
+        this.inputSplitter = inputSplitter;
+    }
+
+    public static void main(String[] args) { SpringApplication.run(CommandLineDrawerApplication.class, args); }
+
+    @Bean
+    public void run() {
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 try {
                     System.out.print("Enter a command: ");
-                    app.executeCommand(scanner.nextLine());
+                    executeCommand(scanner.nextLine());
                 } catch (CommandLineDrawerException e) {
-                    System.err.println(e.getMessage());
+                    logger.error(e.getMessage());
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
     }
 
@@ -38,7 +55,7 @@ public class CommandLineDrawerApplication {
          * 3. Split console input into command ch and params
          * */
         validateConsoleInput(consoleInput);
-        ConsoleInputSplitter inputSplitter = new ConsoleInputSplitter(consoleInput);
+        inputSplitter = new ConsoleInputSplitter(consoleInput);
         if (canvasContext == null) {
             if (!(inputSplitter.getCommandType().equals(CommandType.CANVAS)
                 || inputSplitter.getCommandType().equals(CommandType.QUIT))
@@ -62,7 +79,7 @@ public class CommandLineDrawerApplication {
         }
         String commandCh = consoleInput.substring(0, 1);
         if (CommandType.getCommandType(commandCh) == null) {
-            throw new CommandLineDrawerException("Command " + commandCh.toUpperCase() + " is not a valid command.");
+            throw new CommandLineDrawerException("Command " + commandCh + " is not a valid command.");
         }
     }
 }

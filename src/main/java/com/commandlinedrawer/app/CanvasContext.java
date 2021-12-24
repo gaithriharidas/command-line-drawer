@@ -8,35 +8,50 @@ import com.commandlinedrawer.draw.Quit;
 import com.commandlinedrawer.draw.Rectangle;
 import com.commandlinedrawer.exception.CommandLineDrawerException;
 import com.commandlinedrawer.model.CommandType;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CanvasContext {
     private Command command;
+    private Canvas canvas;
+    private Line line;
+    private Rectangle rectangle;
+    private Fill fill;
+    private Quit quit;
+
+    public CanvasContext() {
+        this.canvas = new Canvas();
+        this.line = new Line();
+        this.rectangle = new Rectangle();
+        this.fill = new Fill();
+        this.quit = new Quit();
+    }
+
+    private Command getCommand(CommandType commandType) throws CommandLineDrawerException {
+        var command = switch (commandType) {
+            case CANVAS -> canvas;
+            case LINE -> line;
+            case RECTANGLE -> rectangle;
+            case FILL -> fill;
+            case QUIT -> quit;
+            default -> throw new CommandLineDrawerException("Command not valid!");
+        };
+        return command;
+    }
 
     public void setCommand(final ConsoleInputSplitter consoleInput) throws CommandLineDrawerException {
         var newCommand = getCommand(consoleInput.getCommandType());
-        if (this.command != null) {
-            newCommand.setHeight(this.command.getHeight());
-            newCommand.setWidth(this.command.getWidth());
-            newCommand.setShape(this.command.getShape());
+        if (command != null) {
+            newCommand.setHeight(command.getHeight());
+            newCommand.setWidth(command.getWidth());
+            newCommand.setShape(command.getShape());
         }
         this.command = newCommand;
     }
 
     public void executeCommand(final List<String> params) throws CommandLineDrawerException {
         command.execute(params);
-    }
-
-    private Command getCommand(CommandType commandType) throws CommandLineDrawerException {
-        var command = switch (commandType) {
-            case CANVAS -> new Canvas();
-            case LINE -> new Line();
-            case RECTANGLE -> new Rectangle();
-            case FILL -> new Fill();
-            case QUIT -> new Quit();
-            default -> throw new CommandLineDrawerException("Command not valid!");
-        };
-        return command;
     }
 }

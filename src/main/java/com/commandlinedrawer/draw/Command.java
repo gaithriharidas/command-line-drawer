@@ -3,10 +3,14 @@ package com.commandlinedrawer.draw;
 import com.commandlinedrawer.exception.CommandLineDrawerException;
 import org.apache.logging.log4j.util.Chars;
 import org.apache.logging.log4j.util.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public abstract class Command {
+    private static final Logger logger = LoggerFactory.getLogger(Command.class);
+
     protected int width;
     protected int height;
     protected char[][] shape;
@@ -42,10 +46,11 @@ public abstract class Command {
 
         for (int i = 0; i < shape.length; ++i) {
             for (int j = 0; j < shape[i].length; j++) {
-                results.append((shape[i][j]) == 0 ? Chars.SPACE : shape[i][j]);
+                results.append((shape[i][j] == 0) ? Chars.SPACE : shape[i][j]);
             }
             results.append(Strings.LINE_SEPARATOR);
         }
-        System.out.print(results.toString());
+//        System.out.print(results.toString());
+        logger.info(results.toString());
     }
 }
